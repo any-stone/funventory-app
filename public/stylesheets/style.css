@@ -99,3 +99,25 @@ nav > a {
 .inline {
   display: inline;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th {
+  padding: 8px;
+  text-align: center;
+  background-color: #9FC7AA;
+}
+td {
+  padding: 8px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+}
