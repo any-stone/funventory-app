@@ -3,6 +3,22 @@
 
 <section>
   <h1>We love video games here!</h1>
+  <% if (user) { %>
+    <h2>What are you playing today? Add your game here:</h2>
+    <form action="/games" method="POST">
+      <label for="title-input">Title:</label>
+      <input type="text" name="title" id="title-input">
+      <label for="platform-input">Platform:</label>
+      <input type="text" name="platform" id="platform-input">
+      <label for="completion-status-select">Status:</label>
+      <select name="completion-status" id="ompletion-status-select">
+        <option value="Complete">Complete</option>
+        <option value="Incomplete">Incomplete</option>
+        <option value="In-progress">In progress</option>
+      </select>
+      <button type="submit">Add 🕹️</button>
+    </form>
+  <% } %>
   <h2>Full list of video games ever existed</h2>
   <ul>
     <% games.forEach(game => { %>

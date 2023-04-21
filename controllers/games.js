@@ -15,6 +15,19 @@ function index(req, res) {
   })
 }
 
+function create(req, res) {
+  req.body.owner = req.user.profile._id
+  Game.create(req.body)
+  .then(game => {
+    res.redirect('/games')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/games')
+  })
+}
+
 export {
-  index
+  index,
+  create,
 }
