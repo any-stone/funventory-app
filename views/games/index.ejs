@@ -1,0 +1,20 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+  <h1>We love video games here!</h1>
+  <h2>Full list of video games ever existed</h2>
+  <ul>
+    <% games.forEach(game => { %>
+      <tr>
+        <td>🕹️ <%= game.title %></td>
+        <td><%= game.platform %></td>
+        <td><%= game.releaseYear %></td>
+        <td><%= game.genre %></td>
+        <td><%= game.developer %></td>
+      </tr>
+    <% }) %>
+  </ul>
+</section>
+
+<%- include('../partials/footer') %>
