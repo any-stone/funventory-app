@@ -3,7 +3,7 @@
 <%- include('../partials/nav') %>
 
 <section>
-	<p>Added by <%= game.owner.name %>...</p>
+	<p>Added by <%= game.owner.name %></p>
   <h1>🕹️ <%= game.title %></h1>
   <section>
     <div>Title: </div>
@@ -16,6 +16,32 @@
     <div><%= game.genre %></div>
     <div>Developer: </div>
     <div><%= game.developer %></div>
+    <div class="form-group">
+      <label for="completion-status-select">Status:</label>
+      <select name="completion-status" id="completion-status-select">
+        <option value="Complete">Complete</option>
+        <option value="Incomplete">Incomplete</option>
+        <option value="In-progress">In progress</option>
+      </select>
+    </div>
+    <h2>Reviews</h2>
+  <form 
+    id="add-review-form"
+    action="/games/<%= game._id %>/reviews"
+    method="POST"
+  >
+    <label for="content-textarea">Review:</label>
+    <textarea name="content" id="content-textarea"></textarea>
+    <label for="rating-select">Rating:</label>
+    <select name="rating" id="rating-select">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5" selected>5</option>
+    </select>
+    <button type="submit">Add Review</button>
+  </form>
   </section>   
 </section>
 
