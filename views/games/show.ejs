@@ -1,0 +1,22 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/public/stylesheets/show.css" />
+<%- include('../partials/nav') %>
+
+<section>
+	<p>Added by <%= game.owner.name %>...</p>
+  <h1>🕹️ <%= game.title %></h1>
+  <section>
+    <div>Title: </div>
+    <div><%= game.title %></div>
+    <div>Platform: </div>
+    <div><%= game.platform %></div>
+    <div>Release Year: </div>
+    <div><%= game.releaseYear %></div>
+    <div>Genre: </div>
+    <div><%= game.genre %></div>
+    <div>Developer: </div>
+    <div><%= game.developer %></div>
+  </section>   
+</section>
+
+<%- include('../partials/footer') %>

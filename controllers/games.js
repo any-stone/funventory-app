@@ -27,7 +27,23 @@ function create(req, res) {
   })
 }
 
+function show(req, res) {
+  Game.findById(req.params.gameId)
+  .populate("owner")
+  .then(game => {
+    res.render('games/show', {
+      game,
+      title: "Game show"
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/games')
+  })
+}
+
 export {
   index,
   create,
+  show,
 }

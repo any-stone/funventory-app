@@ -42,7 +42,7 @@
           <% games.forEach(game=> { %>
             <tr>
               <td>
-                <%= game.title %>
+                <a href="/games/<%= game._id %>"><%= game.title %></a>
               </td>
               <td>
                 <%= game.platform %>
