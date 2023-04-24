@@ -73,11 +73,16 @@
                   <p>You must be logged in to add a review.</p>
                   <% } %>
                     <ul>
-                      <% game.reviews.forEach(review=> { %>
+                      <% game.reviews.forEach(review => { %>
                         <li>
                           <%= review.text %> - <%= review.rating %>/5
+                          <% if (user && user.profile._id.equals(review.owner._id)) { %>
+                            <a href="/games/<%= game._id %>/reviews/<%= review._id %>/edit">
+                              <button>Edit Review</button>
+                            </a>
+                          <% } %>
                         </li>
-                        <% }) %>
+                      <% }) %>
                     </ul>
             </section>
     </div>
