@@ -9,7 +9,7 @@
         </p>
         <h1>🕹️ <%= game.title %>
         </h1>
-        <% if (user && user.profile._id.equals(game.owner._id)) { %>
+        <% if (user && user?.profile._id.equals(game.owner._id)) { %>
           <a href="/games/<%= game._id %>/edit">
             <button>Edit Game</button>
           </a>
@@ -76,7 +76,7 @@
                       <% game.reviews.forEach(review => { %>
                         <li>
                           <%= review.text %> - <%= review.rating %>/5
-                          <% if (user && user.profile._id.equals(review.owner._id)) { %>
+                          <% if (user?.profile._id.equals(review.owner._id)) { %>
                             <a href="/games/<%= game._id %>/reviews/<%= review._id %>/edit">
                               <button>Edit Review</button>
                             </a>
