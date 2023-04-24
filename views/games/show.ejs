@@ -1,62 +1,79 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/public/stylesheets/show.css" />
-<%- include('../partials/nav') %>
+  <link rel="stylesheet" href="/public/stylesheets/show.css" />
+  <%- include('../partials/nav') %>
 
-<div class="wrapper">
-  <section>
-    <p><%= game.owner.name %> added this game</p>
-    <h1>🕹️ <%= game.title %></h1>
-    <section>
-      <table class="game-details">
-        <tr>
-          <th>Title:</th>
-          <td><%= game.title %></td>
-        </tr>
-        <tr>
-          <th>Platform:</th>
-          <td><%= game.platform %></td>
-        </tr>
-        <tr>
-          <th>Release Year:</th>
-          <td><%= game.releaseYear %></td>
-        </tr>
-        <tr>
-          <th>Genre:</th>
-          <td><%= game.genre %></td>
-        </tr>
-        <tr>
-          <th>Developer:</th>
-          <td><%= game.developer %></td>
-        </tr>
-      </table>
-      <div class="form-group">
-        <label for="completion-status-select">Status:</label>
-        <select name="completion-status" id="completion-status-select">
-          <option value="Complete">Complete</option>
-          <option value="Incomplete">Incomplete</option>
-          <option value="In-progress">In progress</option>
-        </select>
-      </div>
-      <h2>Reviews</h2>
-      <form 
-        id="add-review-form"
-        action="/games/<%= game._id %>/reviews"
-        method="POST"
-      >
-        <label for="content-textarea">Write a review:</label>
-        <textarea name="content" id="content-textarea" placeholder="How was it?"></textarea>></textarea>
-        <label for="rating-select">Rating:</label>
-        <select name="rating" id="rating-select">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5" selected>5</option>
-        </select>
-        <button type="submit">Add Review</button>
-      </form>
-    </section>   
-  </section>
-</div>
+    <div class="wrapper">
+      <section>
+        <p>
+          <%= game.owner.name %> added this game
+        </p>
+        <h1>🕹️ <%= game.title %>
+        </h1>
+        <section>
+          <table class="game-details">
+            <tr>
+              <th>Title:</th>
+              <td>
+                <%= game.title %>
+              </td>
+            </tr>
+            <tr>
+              <th>Platform:</th>
+              <td>
+                <%= game.platform %>
+              </td>
+            </tr>
+            <tr>
+              <th>Release Year:</th>
+              <td>
+                <%= game.releaseYear %>
+              </td>
+            </tr>
+            <tr>
+              <th>Genre:</th>
+              <td>
+                <%= game.genre %>
+              </td>
+            </tr>
+            <tr>
+              <th>Developer:</th>
+              <td>
+                <%= game.developer %>
+              </td>
+            </tr>
+          </table>
+          <div class="form-group">
+            <label for="completion-status-select">Status:</label>
+            <select name="completion-status" id="completion-status-select">
+              <option value="Complete">Complete</option>
+              <option value="Incomplete">Incomplete</option>
+              <option value="In-progress">In progress</option>
+            </select>
+          </div>
+          <h2>Reviews</h2>
+          <form id="add-review-form" action="/games/<%= game._id %>/reviews" method="POST">
+            <label for="content-textarea">Write a review:</label>
+            <textarea name="text" id="content-textarea" placeholder="How was it?"></textarea>
+            <label for="rating-select">Rating:</label>
+            <select name="rating" id="rating-select">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5" selected>5</option>
+            </select>
+            <button type="submit">Add Review</button>
+          </form>
+        </section>
+        <h2>Reviews</h2>
+        <ul>
+          <% game.reviews.forEach(review=> { %>
+            <li>
+              <%= review.text %> - <%= review.rating %>/5
+            </li>
+            <% }) %>
+        </ul>
+      </section>
+    </div>
 
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>

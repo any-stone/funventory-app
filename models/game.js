@@ -9,7 +9,7 @@ const gameSchema = new Schema({
   genre: String,
   developer: String,
   status: {type: String, enum: ['Complete', 'Incomplete', 'In Progress']},
-  reviews: {type: Schema.Types.ObjectId, ref: 'GameReview'},
+  reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}],
   owner: {type: Schema.Types.ObjectId, ref: 'Profile'}
 }, {
   timestamps: true

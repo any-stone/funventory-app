@@ -30,6 +30,7 @@ function create(req, res) {
 function show(req, res) {
   Game.findById(req.params.gameId)
   .populate("owner")
+  .populate("reviews")
   .then(game => {
     res.render('games/show', {
       game,

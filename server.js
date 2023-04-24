@@ -64,7 +64,7 @@ app.use(passDataToView)
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
 app.use('/games', gamesRouter)
-app.use('/reviews', reviewsRouter)
+app.use('/games', reviewsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
