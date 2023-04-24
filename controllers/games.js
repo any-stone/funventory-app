@@ -4,7 +4,7 @@ function index(req, res) {
   console.log('GAMES 🕹️')
   Game.find({})
   .then(games => {
-    res.render('games/:gameId', {
+    res.render('games/index', {
       games,
       title: '🕹️'
     })
