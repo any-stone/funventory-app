@@ -1,0 +1,65 @@
+<%- include('../partials/html-head') %>
+  <link rel="stylesheet" href="/public/stylesheets/show.css" />
+  <%- include('../partials/nav') %>
+
+    <div class="wrapper">
+      <section>
+        <p>
+          <%= game.owner.name %> added this game
+        </p>
+        <form action="/games" method="POST">
+          <div class="form-group">
+            <label for="title-input">Title:</label>
+            <input type="text" name="title" value="<%= game.title %>" id="title-input">
+          </div>
+          <div class="form-group">
+            <label for="platform-input">Platform:</label>
+            <input type="text" name="platform" value="<%= game.platform %>" id="platform-input">
+          </div>
+          <div class="form-group">
+            <label for="releaseYear-input">Release Year:</label>
+            <input type="number" name="releaseYear" value="<%= game.releaseYear %>" id="releaseYear-input">
+          </div>
+          <div class="form-group">
+            <label for="genre-input">Genre:</label>
+            <input type="text" name="genre" value="<%= game.genre %>" id="genre-input">
+          </div>
+          <div class="form-group">
+            <label for="developer-input">Developer:</label>
+            <input type="text" name="developer" value="<%= game.developer %>" id="developer-input">
+          </div>
+          <div class="form-group">
+            <label for="completion-status-select">Status:</label>
+            <select name="completion-status" id="completion-status-select">
+              <option value="Complete" <%= game.status === 'Complete' ? 'selected' : '' %>>Complete</option>
+              <option value="Incomplete" <%= game.status === 'Incomplete' ? 'selected' : '' %>>Incomplete</option>
+              <option value="In-progress" <%= game.status === 'In-progress' ? 'selected' : '' %>>In progress</option>
+            </select>
+          </div>
+          
+          <button type="submit">Save 🕹️</button>
+        </form>
+        <form id="add-review-form" action="/games/<%= game._id %>/reviews" method="POST">
+          <label for="content-textarea">Write a review:</label>
+          <textarea name="text" id="content-textarea" placeholder="How was it?"></textarea>
+          <label for="rating-select">Rating:</label>
+          <select name="rating" id="rating-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5" selected>5</option>
+          </select>
+          <button type="submit">Add Review</button>
+        </form>
+        <ul>
+          <% game.reviews.forEach(review=> { %>
+            <li>
+              <%= review.text %> - <%= review.rating %>/5
+            </li>
+            <% }) %>
+        </ul>
+      </section>
+    </div>
+
+    <%- include('../partials/footer') %>
