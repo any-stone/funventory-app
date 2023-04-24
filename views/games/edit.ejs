@@ -39,6 +39,12 @@
           
           <button type="submit">Save 🕹️</button>
         </form>
+        <form 
+            action="/games/<%= game._id %>?_method=DELETE" 
+            method="POST"
+          >
+            <button type="submit">Delete 🕹️</button>
+          </form>
         <form id="add-review-form" action="/games/<%= game._id %>/reviews" method="POST">
           <label for="content-textarea">Write a review:</label>
           <textarea name="text" id="content-textarea" placeholder="How was it?"></textarea>

@@ -70,10 +70,23 @@ function update(req, res) {
   })
 }
 
+function deleteGame(req, res) {
+  console.log('DELETE GAMEZZZ');
+  Game.findByIdAndDelete(req.params.gameId)
+  .then(game => {
+    res.redirect('/games')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
 export {
   index,
   create,
   show,
   edit,
   update,
+  deleteGame as delete,
 }

@@ -12,6 +12,8 @@ router.post('/', isLoggedIn, gamesCtrl.create)
 
 router.put("/:gameId", gamesCtrl.update)
 
+router.delete("/:gameId", gamesCtrl.delete)
+
 export {
   router
 }
