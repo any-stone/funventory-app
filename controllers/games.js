@@ -71,16 +71,24 @@ function update(req, res) {
 }
 
 function deleteGame(req, res) {
-  console.log('DELETE GAMEZZZ');
-  Game.findByIdAndDelete(req.params.gameId)
+  console.log('DELETE GAMEZZZ')
+  Game.findById(req.params.gameId)
   .then(game => {
-    res.redirect('/games')
+    if (game.owner.equals(req.user.profile._id)) {
+      return Game.findByIdAndDelete(req.params.gameId)
+    }
+  })
+  .then(game => {
+    if (game) {
+      res.redirect('/games')
+    }
   })
   .catch(err => {
-    console.log(err)
+    console.log(err);
     res.redirect('/')
   })
 }
+
 
 export {
   index,
