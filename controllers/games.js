@@ -60,15 +60,18 @@ function edit(req, res) {
 
 function update(req, res) {
   console.log("UPDATING GAMEZZZ");
-  Game.findByIdAndUpdate(req.params.gameID, req.body, {new: true})
-  .then(game => {
-    res.redirect(`/games/${game._id}`)
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
+  console.log("Request body:", req.body);
+  Game.findByIdAndUpdate(req.params.gameId, req.body, { new: true })
+    .then(game => {
+      console.log("Updated game:", game);
+      res.redirect(`/games/${game._id}`);
+    })
+    .catch(err => {
+      console.log(err);
+      res.redirect("/");
+    });
 }
+
 
 function deleteGame(req, res) {
   console.log('DELETE GAMEZZZ')

@@ -7,7 +7,7 @@
         <p>
           <%= game.owner.name %> added this game
         </p>
-        <form action="/games" method="POST">
+        <form action="/games/<%= game._id %>?_method=PUT" method="POST">
           <div class="form-group">
             <label for="title-input">Title:</label>
             <input type="text" name="title" value="<%= game.title %>" id="title-input">
@@ -31,20 +31,17 @@
           <div class="form-group">
             <label for="completion-status-select">Status:</label>
             <select name="completion-status" id="completion-status-select">
-              <option value="Complete" <%= game.status === 'Complete' ? 'selected' : '' %>>Complete</option>
-              <option value="Incomplete" <%= game.status === 'Incomplete' ? 'selected' : '' %>>Incomplete</option>
-              <option value="In-progress" <%= game.status === 'In-progress' ? 'selected' : '' %>>In progress</option>
+              <option value="Complete" <%=game.status==='Complete' ? 'selected' : '' %>>Complete</option>
+              <option value="Incomplete" <%=game.status==='Incomplete' ? 'selected' : '' %>>Incomplete</option>
+              <option value="In-progress" <%=game.status==='In-progress' ? 'selected' : '' %>>In progress</option>
             </select>
           </div>
-          
+
           <button type="submit">Save 🕹️</button>
         </form>
-        <form 
-            action="/games/<%= game._id %>?_method=DELETE" 
-            method="POST"
-          >
-            <button type="submit">Delete 🕹️</button>
-          </form>
+        <form action="/games/<%= game._id %>?_method=DELETE" method="POST">
+          <button type="submit">Delete 🕹️</button>
+        </form>
         <form id="add-review-form" action="/games/<%= game._id %>/reviews" method="POST">
           <label for="content-textarea">Write a review:</label>
           <textarea name="text" id="content-textarea" placeholder="How was it?"></textarea>
