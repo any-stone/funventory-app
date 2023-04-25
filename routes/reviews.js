@@ -5,9 +5,12 @@ import { isLoggedIn } from '../middleware/middleware.js'
 const router = Router()
 
 router.get('/:gameId', reviewsCtrl.createReview)
-router.post('/:gameId/reviews', isLoggedIn, reviewsCtrl.createReview) //Refactor!!!
-router.get('/:gameId/reviews/:reviewId/edit', isLoggedIn, reviewsCtrl.editReview) //Refactor!!!
-router.put('/:gameId/reviews/:reviewId', isLoggedIn, reviewsCtrl.updateReview) //Refactor!!!
+router.get('/:gameId/reviews/:reviewId/edit', isLoggedIn, reviewsCtrl.editReview)
+
+router.post('/:gameId/reviews', isLoggedIn, reviewsCtrl.createReview)
+
+router.put('/:gameId/reviews/:reviewId', isLoggedIn, reviewsCtrl.updateReview) 
+
 router.delete('/:gameId/reviews/:reviewId', isLoggedIn, reviewsCtrl.deleteReview)
 
 

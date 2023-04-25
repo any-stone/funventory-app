@@ -2,7 +2,7 @@ import { Game } from '../models/game.js'
 import { Review } from '../models/review.js'
 
 function createReview(req, res) {
-  let newReview;
+  let newReview
   Game.findById(req.params.gameId)
     .then(game => {
       newReview = new Review(req.body)
@@ -45,7 +45,7 @@ function editReview(req, res) {
     })
     .catch((err) => {
       console.log(err)
-      res.redirect(`/games/${req.params.gameId}`)
+      res.redirect('/')
     })
 }
 
@@ -53,7 +53,7 @@ function editReview(req, res) {
 function updateReview(req, res) {
   Game.findById(req.params.gameId)
     .then((game) => {
-      const reviewIndex = game.reviews.findIndex((reviewId) => reviewId.equals(req.params.reviewId));
+      const reviewIndex = game.reviews.findIndex((reviewId) => reviewId.equals(req.params.reviewId))
 
       if (reviewIndex === -1) {
         return res.redirect(`/games/${req.params.gameId}`)
@@ -81,7 +81,7 @@ function updateReview(req, res) {
     })
     .catch((err) => {
       console.log(err)
-      res.redirect(`/games/${req.params.gameId}`)
+      res.redirect('/')
     })
 }
 
@@ -104,8 +104,8 @@ function deleteReview(req, res) {
       }
     })
     .catch((err) => {
-      console.log(err);
-      res.redirect(`/games/${req.params.gameId}`)
+      console.log(err)
+      res.redirect('/')
     })
 }
 

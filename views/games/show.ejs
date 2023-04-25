@@ -78,7 +78,6 @@
                 <% game.reviews.forEach(review => { %>
                   <li>
                     <%= review.text %> - <%= review.rating %>/5
-                    <% console.log('test', review.owner) %> 
                     <% if (user?.profile._id.equals(review.owner._id)) { %>
                       <a href="/games/<%= game._id %>/reviews/<%= review._id %>/edit">
                         <button>Edit Review</button>

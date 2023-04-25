@@ -10,7 +10,7 @@ function index(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect("/")
+    res.redirect('/')
   })
 }
 
@@ -59,10 +59,10 @@ function edit(req, res) {
     .then(game => {
       game.reviews.forEach(review => {
         if (review.owner.equals(req.user.profile._id)) {
-          hasReviewed = true;
+          hasReviewed = true
         }
       })
-      res.render("games/edit", {
+      res.render('games/edit', {
         game,
         hasReviewed,
         title: 'Edit Game'
@@ -78,13 +78,12 @@ function edit(req, res) {
 function update(req, res) {
   Game.findByIdAndUpdate(req.params.gameId, req.body, { new: true })
     .then(game => {
-      console.log("Updated game:", game)
       res.redirect(`/games/${game._id}`)
     })
     .catch(err => {
       console.log(err)
-      res.redirect("/")
-    });
+      res.redirect('/')
+    })
 }
 
 
@@ -101,7 +100,7 @@ function deleteGame(req, res) {
     }
   })
   .catch(err => {
-    console.log(err);
+    console.log(err)
     res.redirect('/')
   })
 }
