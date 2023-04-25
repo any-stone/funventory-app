@@ -8,7 +8,7 @@
         <% if (user) { %>
           <h2 class="center m-bottom font-regular">What are you playing today? Add your game here:</h2>
           <div class="grid-display center">
-          <form action="/games" method="POST">
+            <form action="/games" method="POST">
               <label for="title-input">Title:</label>
               <input type="text" name="title" id="title-input" class="styled-element">
               <label for="platform-input">Platform:</label>
@@ -19,8 +19,12 @@
                 <option value="Incomplete">Incomplete</option>
                 <option value="In-progress">In progress</option>
               </select>
-            <button type="submit">Add 🕹️</button>
-          </form>
+              <div class="row">
+                <div class="col-12 center">
+                  <button type="submit" class="submit-button">Add 🕹️</button>
+                </div>
+              </div>
+            </form>
           <% } %>
         </div>
       </div>

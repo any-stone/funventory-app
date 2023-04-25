@@ -70,6 +70,10 @@ button {
   outline: none;
 }
 
+button:hover {
+  background-color: #F38BD3;
+}
+
 .styled-element {
   height: 48px;
   width: 180px;
