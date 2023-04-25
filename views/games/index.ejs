@@ -24,43 +24,46 @@
           <% } %>
         </div>
       </div>
-        <h2 class="center">Full list of video games ever existed</h2>
-        <div class="row col-6">
-        <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Platform</th>
-              <th>Release Year</th>
-              <th>Genre</th>
-              <th>Developer</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% games.forEach(game=> { %>
-              <tr>
-                <td>
-                  <a href="/games/<%= game._id %>">
-                    <%= game.title %>
-                  </a>
-                </td>
-                <td>
-                  <%= game.platform %>
-                </td>
-                <td>
-                  <%= game.releaseYear %>
-                </td>
-                <td>
-                  <%= game.genre %>
-                </td>
-                <td>
-                  <%= game.developer %>
-                </td>
-              </tr>
-              <% }) %>
-          </tbody>
-        </table>
+      <h2 class="center">Full list of video games ever existed</h2>
+      <div class="grid-display">
+        <div class="container">
+          <div class="row">
+            <table class="container">
+              <thead>
+                <tr>
+                  <th class="center">Title</th>
+                  <th class="center">Platform</th>
+                  <th class="center">Release Year</th>
+                  <th class="center">Genre</th>
+                  <th class="center">Developer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% games.forEach(game => { %>
+                  <tr>
+                    <td class="center">
+                      <a href="/games/<%= game._id %>">
+                        <%= game.title %>
+                      </a>
+                    </td>
+                    <td class="center">
+                      <%= game.platform %>
+                    </td>
+                    <td class="center">
+                      <%= game.releaseYear %>
+                    </td>
+                    <td class="center">
+                      <%= game.genre %>
+                    </td>
+                    <td class="center">
+                      <%= game.developer %>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    </div>
 
     <%- include('../partials/footer') %>
