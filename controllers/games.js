@@ -31,7 +31,7 @@ function show(req, res) {
   Game.findById(req.params.gameId)
     .populate("owner")
     .populate("reviews")
-    .populate("reviews.author")
+    .populate("reviews.owner")
     .then(game => {
       res.render('games/show', {
         game,

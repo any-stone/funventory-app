@@ -6,7 +6,8 @@ function createReview(req, res) {
   Game.findById(req.params.gameId)
     .then(game => {
       newReview = new Review(req.body)
-      newReview.game = game._id;
+      newReview.game = game._id
+      newReview.owner = req.user.profile._id
       return newReview.save().then(() => game)
     })
     .then(game => {
