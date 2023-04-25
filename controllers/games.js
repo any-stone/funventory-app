@@ -46,6 +46,7 @@ function show(req, res) {
 
 function edit(req, res) {
   Game.findById(req.params.gameId)
+  .populate('reviews')
   .then(game => {
     res.render("games/edit", {
       game,
