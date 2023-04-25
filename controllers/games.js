@@ -27,13 +27,20 @@ function create(req, res) {
 }
 
 function show(req, res) {
+  let hasReviewed = false
   Game.findById(req.params.gameId)
-    .populate("owner")
-    .populate("reviews")
-    .populate("reviews.owner")
+    .populate('owner')
+    .populate('reviews')
+    .populate('reviews.owner')
     .then(game => {
+      game.reviews.forEach(review => {
+        if (review.owner._id.equals(req.user.profile._id)) {
+          hasReviewed = true
+        }
+      })
       res.render('games/show', {
         game,
+        hasReviewed,
         title: 'Game show'
       })
     })
@@ -45,19 +52,27 @@ function show(req, res) {
 
 
 function edit(req, res) {
+  let hasReviewed = false
   Game.findById(req.params.gameId)
-  .populate('reviews')
-  .then(game => {
-    res.render("games/edit", {
-      game,
-      title: 'Edit Game'
+    .populate('reviews')
+    .then(game => {
+      game.reviews.forEach(review => {
+        if (review.owner.equals(req.user.profile._id)) {
+          hasReviewed = true;
+        }
+      })
+      res.render("games/edit", {
+        game,
+        hasReviewed,
+        title: 'Edit Game'
+      })
     })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
+    })
 }
+
 
 function update(req, res) {
   Game.findByIdAndUpdate(req.params.gameId, req.body, { new: true })
