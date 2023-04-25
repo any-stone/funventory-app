@@ -33,10 +33,14 @@ function editReview(req, res) {
         return res.redirect(`/games/${req.params.gameId}`)
       }
 
-      if (req.user._id.equals(review.owner)) {
-        res.render('reviews/edit', { game, review })
+      if (req.user.profile._id.equals(review.owner)) {
+        console.log('TEST1111111=', req.user.profile._id, 'and', review.owner)
+        res.render('reviews/edit', { 
+          game, 
+          review,
+          title: 'Edit Review'
+         })
       } else {
-        console.log('TEST1111111=', req.user._id, review.owner);
         res.redirect(`/games/${req.params.gameId}`)
       }
     })
