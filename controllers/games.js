@@ -54,6 +54,7 @@ function show(req, res) {
 function edit(req, res) {
   let hasReviewed = false
   Game.findById(req.params.gameId)
+    .populate('owner')
     .populate('reviews')
     .then(game => {
       game.reviews.forEach(review => {
