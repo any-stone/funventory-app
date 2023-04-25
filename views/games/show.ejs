@@ -1,5 +1,5 @@
 <%- include('../partials/html-head') %>
-  <link rel="stylesheet" href="/public/stylesheets/show.css" />
+  <link rel="stylesheet" href="/stylesheets/show.css" />
   <%- include('../partials/nav') %>
 
     <div class="wrapper">
@@ -9,7 +9,7 @@
         </p>
         <h1>🕹️ <%= game.title %>
         </h1>
-        <% if (user && user?.profile._id.equals(game.owner._id)) { %>
+        <% if (user?.profile._id.equals(game.owner._id)) { %>
           <a href="/games/<%= game._id %>/edit">
             <button>Edit Game</button>
           </a>

@@ -1,7 +1,6 @@
 import { Game } from '../models/game.js'
 
 function index(req, res) {
-  console.log('GAMES 🕹️')
   Game.find({})
   .then(games => {
     res.render('games/index', {
@@ -46,7 +45,6 @@ function show(req, res) {
 
 
 function edit(req, res) {
-  console.log("LET'S UPDATE GAMEZZZ!")
   Game.findById(req.params.gameId)
   .then(game => {
     res.render("games/edit", {
@@ -61,22 +59,19 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  console.log("UPDATING GAMEZZZ");
-  console.log("Request body:", req.body);
   Game.findByIdAndUpdate(req.params.gameId, req.body, { new: true })
     .then(game => {
-      console.log("Updated game:", game);
-      res.redirect(`/games/${game._id}`);
+      console.log("Updated game:", game)
+      res.redirect(`/games/${game._id}`)
     })
     .catch(err => {
-      console.log(err);
-      res.redirect("/");
+      console.log(err)
+      res.redirect("/")
     });
 }
 
 
 function deleteGame(req, res) {
-  console.log('DELETE GAMEZZZ')
   Game.findById(req.params.gameId)
   .then(game => {
     if (game.owner.equals(req.user.profile._id)) {

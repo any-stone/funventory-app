@@ -25,24 +25,27 @@ function createReview(req, res) {
 
 function editReview(req, res) {
   Game.findById(req.params.gameId)
+    .populate('reviews')
     .then((game) => {
-      const review = game.reviews.id(req.params.reviewId)
+      const review = game.reviews.find(review => review._id.equals(req.params.reviewId))
 
       if (!review) {
         return res.redirect(`/games/${req.params.gameId}`)
       }
 
-      if (req.user._id.equals(review.user)) {
+      if (req.user._id.equals(review.owner)) {
         res.render('reviews/edit', { game, review })
       } else {
+        console.log('TEST1111111=', req.user._id, review.owner);
         res.redirect(`/games/${req.params.gameId}`)
       }
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err)
       res.redirect(`/games/${req.params.gameId}`)
-    });
+    })
 }
+
 
 function updateReview(req, res) {
   Game.findById(req.params.gameId)
