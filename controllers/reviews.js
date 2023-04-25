@@ -18,7 +18,7 @@ function createReview(req, res) {
       res.redirect(`/games/${req.params.gameId}`)
     })
     .catch(err => {
-      console.log(err);
+      console.log(err)
       res.redirect('/')
     })
 }
@@ -34,12 +34,11 @@ function editReview(req, res) {
       }
 
       if (req.user.profile._id.equals(review.owner)) {
-        console.log('TEST1111111=', req.user.profile._id, 'and', review.owner)
-        res.render('reviews/edit', { 
-          game, 
+        res.render('reviews/edit', {
+          game,
           review,
           title: 'Edit Review'
-         })
+        })
       } else {
         res.redirect(`/games/${req.params.gameId}`)
       }
@@ -54,30 +53,39 @@ function editReview(req, res) {
 function updateReview(req, res) {
   Game.findById(req.params.gameId)
     .then((game) => {
-      const review = game.reviews.id(req.params.reviewId)
+      const reviewIndex = game.reviews.findIndex((reviewId) => reviewId.equals(req.params.reviewId));
 
-      if (!review) {
-        return res.redirect(`/games/${req.params.gameId}`)
+      if (reviewIndex === -1) {
+        return res.redirect(`/games/${req.params.gameId}`);
       }
 
-      if (req.user._id.equals(review.user)) {
-        review.text = req.body.text;
-        review.rating = req.body.rating;
-        game.save()
-          .then(() => res.redirect(`/games/${req.params.gameId}`))
-          .catch((err) => {
-            console.log(err);
-            res.redirect(`/games/${req.params.gameId}`)
-          });
-      } else {
-        res.redirect(`/games/${req.params.gameId}`)
-      }
+      Review.findById(req.params.reviewId)
+        .then((review) => {
+          if (req.user.profile._id.equals(review.owner)) {
+            review.text = req.body.text;
+            review.rating = req.body.rating;
+            review.save()
+              .then(() => res.redirect(`/games/${req.params.gameId}`))
+              .catch((err) => {
+                console.log(err);
+                res.redirect(`/games/${req.params.gameId}`);
+              });
+          } else {
+            res.redirect(`/games/${req.params.gameId}`);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          res.redirect(`/games/${req.params.gameId}`);
+        });
     })
     .catch((err) => {
       console.log(err);
-      res.redirect(`/games/${req.params.gameId}`)
+      res.redirect(`/games/${req.params.gameId}`);
     });
 }
+
+
 
 export {
   createReview,
