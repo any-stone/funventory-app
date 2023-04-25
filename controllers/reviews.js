@@ -56,39 +56,63 @@ function updateReview(req, res) {
       const reviewIndex = game.reviews.findIndex((reviewId) => reviewId.equals(req.params.reviewId));
 
       if (reviewIndex === -1) {
-        return res.redirect(`/games/${req.params.gameId}`);
+        return res.redirect(`/games/${req.params.gameId}`)
       }
 
       Review.findById(req.params.reviewId)
         .then((review) => {
           if (req.user.profile._id.equals(review.owner)) {
-            review.text = req.body.text;
-            review.rating = req.body.rating;
+            review.text = req.body.text
+            review.rating = req.body.rating
             review.save()
               .then(() => res.redirect(`/games/${req.params.gameId}`))
               .catch((err) => {
-                console.log(err);
-                res.redirect(`/games/${req.params.gameId}`);
-              });
+                console.log(err)
+                res.redirect(`/games/${req.params.gameId}`)
+              })
           } else {
-            res.redirect(`/games/${req.params.gameId}`);
+            res.redirect(`/games/${req.params.gameId}`)
           }
         })
         .catch((err) => {
-          console.log(err);
-          res.redirect(`/games/${req.params.gameId}`);
+          console.log(err)
+          res.redirect(`/games/${req.params.gameId}`)
         });
     })
     .catch((err) => {
-      console.log(err);
-      res.redirect(`/games/${req.params.gameId}`);
-    });
+      console.log(err)
+      res.redirect(`/games/${req.params.gameId}`)
+    })
 }
 
+function deleteReview(req, res) {
+  Review.findOneAndDelete({ _id: req.params.reviewId, owner: req.user.profile._id })
+    .then((deletedReview) => {
+      if (deletedReview) {
+        Game.findByIdAndUpdate(
+          req.params.gameId,
+          { $pull: { reviews: req.params.reviewId } },
+          { new: true, useFindAndModify: false }
+        )
+          .then(() => res.redirect(`/games/${req.params.gameId}`))
+          .catch((err) => {
+            console.log(err)
+            res.redirect(`/games/${req.params.gameId}`)
+          })
+      } else {
+        res.redirect(`/games/${req.params.gameId}`)
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.redirect(`/games/${req.params.gameId}`)
+    })
+}
 
 
 export {
   createReview,
   editReview,
   updateReview,
+  deleteReview,
 }
