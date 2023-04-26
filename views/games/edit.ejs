@@ -1,8 +1,8 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/public/stylesheets/show.css" />
-<%- include('../partials/nav') %>
+  <link rel="stylesheet" href="/public/stylesheets/show.css" />
+  <%- include('../partials/nav') %>
 
-    <div class="wrapper">
+    <div class="container">
       <section>
         <p>
           <%= game.owner.name %> added this game
@@ -10,27 +10,29 @@
         <form action="/games/<%= game._id %>?_method=PUT" method="POST">
           <div class="form-group">
             <label for="title-input">Title:</label>
-            <input type="text" name="title" value="<%= game.title %>" id="title-input">
+            <input type="text" name="title" value="<%= game.title %>" id="title-input" class="styled-element">
           </div>
           <div class="form-group">
             <label for="platform-input">Platform:</label>
-            <input type="text" name="platform" value="<%= game.platform %>" id="platform-input">
+            <input type="text" name="platform" value="<%= game.platform %>" id="platform-input" class="styled-element">
           </div>
           <div class="form-group">
             <label for="releaseYear-input">Release Year:</label>
-            <input type="number" name="releaseYear" value="<%= game.releaseYear %>" id="releaseYear-input">
+            <input type="number" name="releaseYear" value="<%= game.releaseYear %>" id="releaseYear-input"
+              class="styled-element">
           </div>
           <div class="form-group">
             <label for="genre-input">Genre:</label>
-            <input type="text" name="genre" value="<%= game.genre %>" id="genre-input">
+            <input type="text" name="genre" value="<%= game.genre %>" id="genre-input" class="styled-element">
           </div>
           <div class="form-group">
             <label for="developer-input">Developer:</label>
-            <input type="text" name="developer" value="<%= game.developer %>" id="developer-input">
+            <input type="text" name="developer" value="<%= game.developer %>" id="developer-input"
+              class="styled-element">
           </div>
           <div class="form-group">
             <label for="completion-status-select">Status:</label>
-            <select name="completion-status" id="completion-status-select">
+            <select name="completion-status" id="completion-status-select" class="styled-element">
               <option value="Complete" <%=game.status==='Complete' ? 'selected' : '' %>>Complete</option>
               <option value="Incomplete" <%=game.status==='Incomplete' ? 'selected' : '' %>>Incomplete</option>
               <option value="In-progress" <%=game.status==='In-progress' ? 'selected' : '' %>>In progress</option>
@@ -46,9 +48,9 @@
           <% if (!hasReviewed) { %>
             <form id="add-review-form" action="/games/<%= game._id %>/reviews" method="POST">
               <label for="content-textarea">Write a review:</label>
-              <textarea name="text" id="content-textarea" placeholder="How was it?"></textarea>
+              <textarea name="text" id="content-textarea" placeholder="How was it?" class="styled-element"></textarea>
               <label for="rating-select">Rating:</label>
-              <select name="rating" id="rating-select">
+              <select name="rating" id="rating-select" class="styled-element">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -57,18 +59,18 @@
               </select>
               <button type="submit">Add Review</button>
             </form>
-          <% } %>
-        <% } else { %>
-          <p>You must be logged in to add a review.</p>
-        <% } %>
-        <ul>
-          <% game.reviews.forEach(review=> { %>
-            <li>
-              <%= review.text %> - <%= review.rating %>/5
-            </li>
-          <% }) %>
-        </ul>
+            <% } %>
+              <% } else { %>
+                <p>You must be logged in to add a review.</p>
+                <% } %>
+                  <ul>
+                    <% game.reviews.forEach(review=> { %>
+                      <li>
+                        <%= review.text %> - <%= review.rating %>/5
+                      </li>
+                      <% }) %>
+                  </ul>
       </section>
     </div>
-    
+
     <%- include('../partials/footer') %>
