@@ -2,72 +2,75 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
   <%- include('../partials/nav') %>
 
-    <div class="body-content">
-      <div class="row">
-        <h1 class="center m-bottom font-heavy">We love video games here!</h1>
-        <% if (user) { %>
-          <h2 class="center m-bottom font-regular">What are you playing today? Add your game here:</h2>
-          <div class="grid-display center">
-            <form action="/games" method="POST">
-              <label for="title-input">Title:</label>
-              <input type="text" name="title" id="title-input" class="styled-element">
-              <label for="platform-input">Platform:</label>
-              <input type="text" name="platform" id="platform-input" class="styled-element">
-              <label for="completion-status-select">Status:</label>
-              <select name="completion-status" id="completion-status-select" class="styled-element">
-                <option value="Complete">Complete</option>
-                <option value="Incomplete">Incomplete</option>
-                <option value="In-progress">In progress</option>
-              </select>
-              <div class="row">
-                <div class="col-12 center">
-                  <button type="submit" class="submit-button">Add 🕹️</button>
+    <div class="flex-sticky-footer">
+      <div class="body-content">
+        <div class="row">
+          <h1 class="center m-bottom font-heavy">We love video games here!</h1>
+          <% if (user) { %>
+            <h2 class="center m-bottom font-regular">What are you playing today? Add your game here:</h2>
+            <div class="grid-display center">
+              <form action="/games" method="POST">
+                <label for="title-input">Title:</label>
+                <input type="text" name="title" id="title-input" class="styled-element">
+                <label for="platform-input">Platform:</label>
+                <input type="text" name="platform" id="platform-input" class="styled-element">
+                <label for="completion-status-select">Status:</label>
+                <select name="completion-status" id="completion-status-select" class="styled-element">
+                  <option value="Complete">Complete</option>
+                  <option value="Incomplete">Incomplete</option>
+                  <option value="In-progress">In progress</option>
+                </select>
+                <div class="row">
+                  <div class="col-12 center">
+                    <button type="submit" class="submit-button">Add 🕹️</button>
+                  </div>
                 </div>
-              </div>
-            </form>
-          <% } %>
+              </form>
+              <% } %>
+            </div>
         </div>
-      </div>
-      <h2 class="center">Full list of video games ever existed</h2>
-      <div class="grid-display">
-        <div class="container">
-          <div class="row">
-            <table class="container">
-              <thead>
-                <tr>
-                  <th class="center">Title</th>
-                  <th class="center">Platform</th>
-                  <th class="center">Release Year</th>
-                  <th class="center">Genre</th>
-                  <th class="center">Developer</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% games.forEach(game => { %>
+        <h2 class="center">Full list of video games ever existed</h2>
+        <div class="grid-display">
+          <div class="container">
+            <div class="row">
+              <table class="container">
+                <thead>
                   <tr>
-                    <td class="center">
-                      <a href="/games/<%= game._id %>">
-                        <%= game.title %>
-                      </a>
-                    </td>
-                    <td class="center">
-                      <%= game.platform %>
-                    </td>
-                    <td class="center">
-                      <%= game.releaseYear %>
-                    </td>
-                    <td class="center">
-                      <%= game.genre %>
-                    </td>
-                    <td class="center">
-                      <%= game.developer %>
-                    </td>
+                    <th class="center">Title</th>
+                    <th class="center">Platform</th>
+                    <th class="center">Release Year</th>
+                    <th class="center">Genre</th>
+                    <th class="center">Developer</th>
                   </tr>
-                <% }) %>
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  <% games.forEach(game=> { %>
+                    <tr>
+                      <td class="center">
+                        <a href="/games/<%= game._id %>">
+                          <%= game.title %>
+                        </a>
+                      </td>
+                      <td class="center">
+                        <%= game.platform %>
+                      </td>
+                      <td class="center">
+                        <%= game.releaseYear %>
+                      </td>
+                      <td class="center">
+                        <%= game.genre %>
+                      </td>
+                      <td class="center">
+                        <%= game.developer %>
+                      </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
 
-    <%- include('../partials/footer') %>
+      <%- include('../partials/footer') %>
+    </div>

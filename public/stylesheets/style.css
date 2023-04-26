@@ -97,6 +97,20 @@ footer {
   padding-bottom: 80px;
 }
 
+footer p {
+  color: #fff;
+}
+
+.flex-sticky-footer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.flex-sticky-footer > .container {
+  flex: 1;
+}
+
+
 /* TYPOGRAPHY */
 
 h1 {
