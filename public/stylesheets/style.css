@@ -34,6 +34,7 @@ body {
   line-height: 1.5;
 }
 
+
 nav {
   background: #FE7880;
   background-image: linear-gradient(#F38BD3, #FE7880);
@@ -54,6 +55,12 @@ nav > a {
   justify-content: center;
 }
 
+.game-info {
+  display: flex;
+  flex-direction: column;
+}
+
+
 button {
   height: 48px;
   width: 180px;
@@ -70,6 +77,12 @@ button {
   transition: all 0.3s ease;
   outline: none;
 }
+
+.small-button {
+  height: 26px;
+  width: 100px;
+}
+
 
 button:hover {
   background-image: linear-gradient(to top, #F38BD3, #FE7880);
@@ -89,6 +102,11 @@ label {
 }
 
 
+.form-inline {
+  display: flex;
+  align-items: center;
+}
+
 .styled-element {
   height: 32px;
   width: 180px;
@@ -107,9 +125,14 @@ label {
 }
 
 .styled-element:hover {
-  background-image: linear-gradient(to top, rgba(243, 139, 211, 0.3), rgba(254, 120, 128, 0.3));
+  background-color: rgba(254, 120, 128, 0.3);
   border-color: transparent;
   transition: all 0.3s ease;
+}
+
+.small-select {
+  width: 100px;
+  height: 26px;
 }
 
 footer {
@@ -123,6 +146,16 @@ footer p {
   color: #fff;
 }
 
+.show-table-cell {
+  padding-top: 8px;
+  padding-right: 60px;
+  padding-bottom: 8px; 
+  padding-left: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .table-cell {
   padding-top: 8px;
   padding-right: 60px;
@@ -132,6 +165,7 @@ footer p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 
 .grid-wrapper {
   display: grid;
@@ -153,9 +187,17 @@ footer p {
 input[type="text"],
 select {
   height: 32px;
-  width: 150px;
+  width: 180px;
 }
 
+.status-label {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.status-select {
+  margin-left: 50px;
+}
 
 
 /* TYPOGRAPHY */
