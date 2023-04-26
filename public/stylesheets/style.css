@@ -90,7 +90,12 @@ button:hover {
   outline: none;
 }
 
-
+footer {
+  background: #FE7880;
+  background: #F38BD3;
+  background-image: linear-gradient(#FE7880, #F38BD3);
+  padding-bottom: 80px;
+}
 
 /* TYPOGRAPHY */
 
