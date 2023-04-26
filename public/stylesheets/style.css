@@ -101,14 +101,16 @@ footer p {
   color: #fff;
 }
 
-.flex-sticky-footer {
-  display: flex;
-  flex-direction: column;
+.grid-wrapper {
+  display: grid;
+  grid-template-rows: 1fr auto;
   min-height: 100vh;
 }
-.flex-sticky-footer > .container {
-  flex: 1;
+
+.grid-content {
+  width: 100%;
 }
+
 
 
 /* TYPOGRAPHY */
