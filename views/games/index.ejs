@@ -28,6 +28,11 @@
                 </div>
               </form>
               <% } %>
+                <div class="col-4 hidden-sm"></div>
+                <div class="col-4">
+                  <div class="line"></div>
+                </div>
+                <div class="col-4 hidden-sm"></div>
             </div>
         </div>
         <h2 class="center">Full list of video games ever existed</h2>
@@ -37,37 +42,39 @@
               <table class="container">
                 <thead>
                   <tr>
-                    <th class="center">Title</th>
-                    <th class="center">Platform</th>
-                    <th class="center">Release Year</th>
-                    <th class="center">Genre</th>
-                    <th class="center">Developer</th>
+                    <th class="center col-3">Title</th>
+                    <th class="center col-2">Platform</th>
+                    <th class="center col-2">Release Year</th>
+                    <th class="center col-2">Genre</th>
+                    <th class="center col-3">Developer</th>
                   </tr>
                 </thead>
                 <tbody>
                   <% games.forEach(game=> { %>
-                    <tr>
-                      <td class="center">
+                    <tr class="table-row">
+                      <td class="center col-3 table-cell">
                         <a href="/games/<%= game._id %>">
                           <%= game.title %>
                         </a>
                       </td>
-                      <td class="center">
+                      <td class="center col-2 table-cell">
                         <%= game.platform %>
                       </td>
-                      <td class="center">
+                      <td class="center col-2 table-cell">
                         <%= game.releaseYear %>
                       </td>
-                      <td class="center">
+                      <td class="center col-2 table-cell">
                         <%= game.genre %>
                       </td>
-                      <td class="center">
+                      <td class="center col-3 table-cell">
                         <%= game.developer %>
                       </td>
                     </tr>
                     <% }) %>
                 </tbody>
+                
               </table>
+              
             </div>
           </div>
         </div>
