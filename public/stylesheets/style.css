@@ -106,6 +106,12 @@ label {
   outline: none;
 }
 
+.styled-element:hover {
+  background-image: linear-gradient(to top, rgba(243, 139, 211, 0.3), rgba(254, 120, 128, 0.3));
+  border-color: transparent;
+  transition: all 0.3s ease;
+}
+
 footer {
   background: #FE7880;
   background: #F38BD3;
