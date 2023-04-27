@@ -77,22 +77,26 @@
                   <% } else { %>
                     <p>You must be logged in to add a review.</p>
                     <% } %>
-                      <h3>All Reviews:</h3>
-                      <ul>
-                        <% game.reviews.forEach(review=> { %>
-                          <li>
-                            <div class="review-text">
-                              <%= review.text %>
-                            </div>
-                            <button class="show-more small-button">Show More</button> - <%= review.rating %>/5
-                              <% if (user?.profile._id.equals(review.owner._id)) { %>
-                                <a href="/games/<%= game._id %>/reviews/<%= review._id %>/edit">
-                                  <button class="small-button">Edit Review</button>
-                                </a>
-                                <% } %>
-                          </li>
-                          <% }) %>
-                      </ul>
+                    <h3>All Reviews:</h3>
+                    <ul>
+                      <% game.reviews.forEach(review=> { %>
+                        <li>
+                          <div class="review-rating">
+                            <%= review.rating %>/5
+                          </div>
+                          <div class="review-text">
+                            <%= review.text %>
+                          </div>
+                          <button class="show-more small-button">Show More</button>
+                          <% if (user?.profile._id.equals(review.owner._id)) { %>
+                            <a href="/games/<%= game._id %>/reviews/<%= review._id %>/edit">
+                              <button class="small-button">Edit Review</button>
+                            </a>
+                          <% } %>
+                        </li>
+                      <% }) %>
+                    </ul>
+                    
           </div>
     </div>
     <script>
@@ -102,17 +106,17 @@
 
         reviewTexts.forEach((reviewText, index) => {
           if (reviewText.scrollWidth > reviewText.clientWidth) {
-            showMoreButtons[index].style.display = "inline";
+            showMoreButtons[index].style.display = "inline"
           }
         })
 
         showMoreButtons.forEach((button, index) => {
           button.addEventListener("click", () => {
             if (button.textContent === "Show More") {
-              reviewTexts[index].style.whiteSpace = "normal";
+              reviewTexts[index].style.whiteSpace = "normal"
               button.textContent = "Show Less"
             } else {
-              reviewTexts[index].style.whiteSpace = "nowrap";
+              reviewTexts[index].style.whiteSpace = "nowrap"
               button.textContent = "Show More"
             }
           })
