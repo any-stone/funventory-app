@@ -185,6 +185,9 @@ select {
   width: 80%;
   height: 150px; 
   resize: none;
+  padding: 0;
+  text-align: left;
+  vertical-align: top;
 }
 
 .review-text {

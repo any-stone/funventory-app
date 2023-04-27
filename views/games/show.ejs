@@ -60,7 +60,8 @@
                 <form id="add-review-form" action="/games/<%= game._id %>/reviews" method="POST">
                   <label for="content-textarea">Write a review:</label>
                   <br>
-                  <textarea name="text" id="content-textarea" placeholder="How was it?" class="styled-element"></textarea>
+                  <textarea name="text" id="content-textarea" placeholder="How was it?"
+                    class="styled-element"></textarea>
                   <br>
                   <label for="rating-select">Rating:</label>
                   <br>
@@ -73,7 +74,7 @@
                   </select>
                   <br>
                   <button type="submit" class="small-button" style="margin-top: 10px;">Add Review</button>
-                </form>                
+                </form>
                 <% } %>
                   <% } else { %>
                     <p>You must be logged in to add a review.</p>
@@ -97,9 +98,9 @@
                           </li>
                           <% }) %>
                       </ul>
-
           </div>
     </div>
+    
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const reviewTexts = document.querySelectorAll(".review-text")
