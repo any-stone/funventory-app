@@ -50,6 +50,15 @@ nav {
   margin-left: auto;
 }
 
+.custom-list {
+  list-style-type: none;
+  padding-left: 1em;
+}
+
+.custom-list li:before {
+  content: '🚀';
+  margin-right: 10px;
+}
 
 nav > a {
   margin: 8px 24px;
@@ -230,6 +239,16 @@ select {
 
 .show-more {
   display: none;
+}
+
+.custom-list {
+  list-style-type: none;
+  padding-left: 1em;
+}
+
+.custom-list li:before {
+  content: '🚀';
+  margin-right: 10px;
 }
 
 
