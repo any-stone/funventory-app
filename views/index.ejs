@@ -2,9 +2,9 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>hey <%= user ? user.profile.name : "friend!" %></h1>
-  <h2>Welcome to FUNventory app!</h2>
-  <h3>Log in to start all the fun!</h3>
+  <h1 class="center m-bottom">hey <%= user ? user.profile.name : "friend!" %></h1>
+  <h2 class="center m-bottom">Welcome to FUNventory app!</h2>
+  <h3 class="center m-bottom">Log in to start all the fun!</h3>
   <% if (user?.profile.avatar) { %>
     <div>
       <img
