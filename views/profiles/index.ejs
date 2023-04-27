@@ -1,11 +1,19 @@
 <%- include('../partials/html-head') %>
-  <%- include('../partials/nav') %>
-    <h1>User Profiles</h1>
-    <ul>
-      <% users.forEach(user=> { %>
-        <li>
-          <%= user.profile.name %>
-        </li>
+<link rel="stylesheet" href="/stylesheets/style.css" />
+<%- include('../partials/nav') %>
+
+<div class="grid-wrapper">
+  <div class="grid-content">
+    <div class="container">
+      <h1>All our gamers here!</h1>
+      <ul>
+        <% users.forEach(user => { %>
+          <li>
+            <%= user.profile.name %>
+          </li>
         <% }) %>
-    </ul>
-    <%- include('../partials/footer') %>
+      </ul>
+    </div>
+  </div>
+  <%- include('../partials/footer') %>
+</div>
