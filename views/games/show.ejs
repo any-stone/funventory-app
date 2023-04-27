@@ -60,11 +60,11 @@
                 <form id="add-review-form" action="/games/<%= game._id %>/reviews" method="POST">
                   <label for="content-textarea">Write a review:</label>
                   <br>
-                  <textarea name="text" id="content-textarea" placeholder="How was it?"></textarea>
+                  <textarea name="text" id="content-textarea" placeholder="How was it?" class="styled-element"></textarea>
                   <br>
                   <label for="rating-select">Rating:</label>
                   <br>
-                  <select name="rating" id="rating-select">
+                  <select name="rating" id="rating-select" class="styled-element">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -73,7 +73,7 @@
                   </select>
                   <br>
                   <button type="submit" class="small-button" style="margin-top: 10px;">Add Review</button>
-                </form>
+                </form>                
                 <% } %>
                   <% } else { %>
                     <p>You must be logged in to add a review.</p>
