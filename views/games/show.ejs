@@ -63,6 +63,7 @@
                   <textarea name="text" id="content-textarea" placeholder="How was it?"></textarea>
                   <br>
                   <label for="rating-select">Rating:</label>
+                  <br>
                   <select name="rating" id="rating-select">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -71,32 +72,32 @@
                     <option value="5" selected>5</option>
                   </select>
                   <br>
-                  <button type="submit" class="small-button">Add Review</button>
+                  <button type="submit" class="small-button" style="margin-top: 10px;">Add Review</button>
                 </form>
                 <% } %>
                   <% } else { %>
                     <p>You must be logged in to add a review.</p>
                     <% } %>
-                    <h3>All Reviews:</h3>
-                    <ul>
-                      <% game.reviews.forEach(review=> { %>
-                        <li>
-                          <div class="review-rating">
-                            <%= review.rating %>/5
-                          </div>
-                          <div class="review-text">
-                            <%= review.text %>
-                          </div>
-                          <button class="show-more small-button">Show More</button>
-                          <% if (user?.profile._id.equals(review.owner._id)) { %>
-                            <a href="/games/<%= game._id %>/reviews/<%= review._id %>/edit">
-                              <button class="small-button">Edit Review</button>
-                            </a>
-                          <% } %>
-                        </li>
-                      <% }) %>
-                    </ul>
-                    
+                      <h3>All Reviews:</h3>
+                      <ul>
+                        <% game.reviews.forEach(review=> { %>
+                          <li>
+                            <div class="review-rating">
+                              <%= review.rating %>/5
+                            </div>
+                            <div class="review-text">
+                              <%= review.text %>
+                            </div>
+                            <button class="show-more small-button">Show More</button>
+                            <% if (user?.profile._id.equals(review.owner._id)) { %>
+                              <a href="/games/<%= game._id %>/reviews/<%= review._id %>/edit">
+                                <button class="small-button">Edit Review</button>
+                              </a>
+                              <% } %>
+                          </li>
+                          <% }) %>
+                      </ul>
+
           </div>
     </div>
     <script>
