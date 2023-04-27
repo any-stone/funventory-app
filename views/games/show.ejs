@@ -48,13 +48,13 @@
             </table>
           </div>
           <div class="status-and-review">
-              <label for="completion-status-select" class="status-label">Status:</label>
-              <select name="completion-status" id="completion-status-select"
-                class="styled-element small-select status-select">
-                <option value="Complete">Complete</option>
-                <option value="Incomplete">Incomplete</option>
-                <option value="In-progress">In progress</option>
-              </select>
+            <label for="completion-status-select" class="status-label">Status:</label>
+            <select name="completion-status" id="completion-status-select"
+              class="styled-element small-select status-select">
+              <option value="Complete">Complete</option>
+              <option value="Incomplete">Incomplete</option>
+              <option value="In-progress">In progress</option>
+            </select>
             <% if (user) { %>
               <% if (!hasReviewed) { %>
                 <form id="add-review-form" action="/games/<%= game._id %>/reviews" method="POST">
@@ -81,16 +81,43 @@
                       <ul>
                         <% game.reviews.forEach(review=> { %>
                           <li>
-                            <%= review.text %> - <%= review.rating %>/5
-                                <% if (user?.profile._id.equals(review.owner._id)) { %>
-                                  <a href="/games/<%= game._id %>/reviews/<%= review._id %>/edit">
-                                    <button>Edit Review</button>
-                                  </a>
-                                  <% } %>
+                            <div class="review-text">
+                              <%= review.text %>
+                            </div>
+                            <button class="show-more small-button">Show More</button> - <%= review.rating %>/5
+                              <% if (user?.profile._id.equals(review.owner._id)) { %>
+                                <a href="/games/<%= game._id %>/reviews/<%= review._id %>/edit">
+                                  <button class="small-button">Edit Review</button>
+                                </a>
+                                <% } %>
                           </li>
                           <% }) %>
                       </ul>
           </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const reviewTexts = document.querySelectorAll(".review-text")
+        const showMoreButtons = document.querySelectorAll(".show-more")
+
+        reviewTexts.forEach((reviewText, index) => {
+          if (reviewText.scrollWidth > reviewText.clientWidth) {
+            showMoreButtons[index].style.display = "inline";
+          }
+        })
+
+        showMoreButtons.forEach((button, index) => {
+          button.addEventListener("click", () => {
+            if (button.textContent === "Show More") {
+              reviewTexts[index].style.whiteSpace = "normal";
+              button.textContent = "Show Less"
+            } else {
+              reviewTexts[index].style.whiteSpace = "nowrap";
+              button.textContent = "Show More"
+            }
+          })
+        })
+      })
+    </script>
 
     <%- include('../partials/footer') %>

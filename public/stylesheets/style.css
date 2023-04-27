@@ -181,6 +181,25 @@ select {
   margin-left: 3px;
 }
 
+#content-textarea {
+  width: 80%;
+  height: 150px; 
+  resize: none;
+}
+
+.review-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.show-more {
+  display: none;
+}
+
+
+
 
 /* TYPOGRAPHY */
 
