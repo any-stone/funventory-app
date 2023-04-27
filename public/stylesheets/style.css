@@ -94,6 +94,18 @@ button:active {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
 }
 
+.center-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  border-radius: 50%;
+  border: 10px solid #FE7880;
+  display: inline-block;
+}
+
 label {
   font-size: 1rem;
   font-weight: bold;

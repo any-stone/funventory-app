@@ -5,11 +5,21 @@
   <div class="grid-content">
     <main>
       <h1 class="center m-bottom">hey <%= user ? user.profile.name : "friend!" %></h1>
-      <h2 class="center m-bottom">Welcome to FUNventory app!</h2>
-      <h3 class="center m-bottom">Log in to start all the fun!</h3>
+      <% if (user) { %>
+        <h2 class="center m-bottom">Happy you are here!</h2>
+      <% } else { %>
+        <h2 class="center m-bottom">Welcome to FUNventory app!</h2>
+        <h3 class="center m-bottom">Sign in to start all the fun!</h3>
+        <div id="g_id_onload" data-client_id="<%= googleClientID %>" data-login_uri="/auth/google" data-auto_prompt="false"></div>
+        <div class="center-button">
+          <div class="g_id_signin m-bottom" data-type="standard" data-size="large" data-theme="filled_black" data-text="signin" data-shape="pill" data-logo_alignment="left">
+          </div>
+        </div>
+      <% } %>
       <% if (user?.profile.avatar) { %>
-        <div>
+        <div class="center-button">
           <img
+            class="avatar"
             src="<%= user.profile.avatar %>"
             alt="<%= user.profile.name %> avatar"
           />
@@ -20,4 +30,3 @@
 
   <%- include('./partials/footer') %>
 </div>
-
