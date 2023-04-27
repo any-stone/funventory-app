@@ -8,16 +8,16 @@
         <a href="/" class="brand-link">
           <h3 class="brand">FUNventory</h3>
         </a>
-        <div class="nav-items"></div>
-        <a href="/games">🕹️</a>
-        <a href="/profiles">👾</a>
-        <% if (user) { %>
-          <a href="/auth/logout">🚪</a>
-          <% } else { %>
-            <div id="g_id_onload" data-client_id="<%= googleClientID %>" data-login_uri="/auth/google"
-              data-auto_prompt="false"></div>
-            <div class="g_id_signin" data-type="icon" data-size="large" data-theme="filled_black"
-              data-text="signin" data-shape="pill" data-logo_alignment="left"></div>
-            <% } %>
-              </div>
+        <div class="nav-items">
+          <a href="/games">🕹️</a>
+          <a href="/profiles">👾</a>
+          <% if (user) { %>
+            <a href="/auth/logout">🚪</a>
+            <% } else { %>
+              <div id="g_id_onload" data-client_id="<%= googleClientID %>" data-login_uri="/auth/google"
+                data-auto_prompt="false"></div>
+              <div class="g_id_signin" data-type="icon" data-size="large" data-theme="filled_black" data-text="signin"
+                data-shape="pill" data-logo_alignment="left"></div>
+              <% } %>
+        </div>
       </nav>

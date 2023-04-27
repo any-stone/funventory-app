@@ -61,6 +61,19 @@ nav > a {
   margin-left: auto;
 }
 
+.nav-items a {
+  margin: 8px 24px;
+  text-decoration: none;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-link {
+  margin-left: 50px;
+}
+
 button {
   height: 48px;
   width: 180px;
