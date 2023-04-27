@@ -1,31 +1,38 @@
 <%- include('../partials/html-head') %>
   <link rel="stylesheet" href="/stylesheets/style.css" />
   <%- include('../partials/nav') %>
-    <div class="container">
-      <div class="status-and-review">
-        <h1>Edit Review for 🕹️ <%= game.title %>
-        </h1>
-        <form action="/games/<%= game._id %>/reviews/<%= review._id %>?_method=PUT" method="POST">
-          <label for="content-textarea">Edit your review:</label>
-          <br>
-          <textarea name="text" id="content-textarea" class="styled-element"><%= review.text %></textarea>
-          <br>
-          <label for="rating-select">Edit Rating:</label>
-          <br>
-          <select name="rating" id="rating-select" class="styled-element">
-            <option value="1" <%=review.rating==1 ? 'selected' : '' %>>1</option>
-            <option value="2" <%=review.rating==2 ? 'selected' : '' %>>2</option>
-            <option value="3" <%=review.rating==3 ? 'selected' : '' %>>3</option>
-            <option value="4" <%=review.rating==4 ? 'selected' : '' %>>4</option>
-            <option value="5" <%=review.rating==5 ? 'selected' : '' %>>5</option>
-          </select>
-          <br>
-          <button type="submit" class="small-button">Save</button>
-        </form>
-        <form action="/games/<%= game._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST"
-          onsubmit="return confirm('Are you sure you want to delete this review?')">
-          <button type="submit" class="small-button">🚫  Delete  🚫</button>
-        </form>
+
+    <div class="grid-wrapper">
+      <div class="grid-content">
+        <div class="container">
+          <div class="container">
+            <div class="status-and-review">
+              <h1>Edit Review for 🕹️ <%= game.title %>
+              </h1>
+              <form action="/games/<%= game._id %>/reviews/<%= review._id %>?_method=PUT" method="POST">
+                <label for="content-textarea">Edit your review:</label>
+                <br>
+                <textarea name="text" id="content-textarea" class="styled-element"><%= review.text %></textarea>
+                <br>
+                <label for="rating-select">Edit Rating:</label>
+                <br>
+                <select name="rating" id="rating-select" class="styled-element">
+                  <option value="1" <%=review.rating==1 ? 'selected' : '' %>>1</option>
+                  <option value="2" <%=review.rating==2 ? 'selected' : '' %>>2</option>
+                  <option value="3" <%=review.rating==3 ? 'selected' : '' %>>3</option>
+                  <option value="4" <%=review.rating==4 ? 'selected' : '' %>>4</option>
+                  <option value="5" <%=review.rating==5 ? 'selected' : '' %>>5</option>
+                </select>
+                <br>
+                <button type="submit" class="small-button">Save</button>
+              </form>
+              <form action="/games/<%= game._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST"
+                onsubmit="return confirm('Are you sure you want to delete this review?')">
+                <button type="submit" class="small-button">🚫 Delete 🚫</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
+      <%- include('../partials/footer') %>
     </div>
-    <%- include('../partials/footer') %>
