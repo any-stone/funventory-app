@@ -356,6 +356,10 @@ p {
   margin-right: auto;
 }
 
+.table-container {
+  padding-right: 130px;
+}
+
 .row {
   position: relative;
   width: 100%;
