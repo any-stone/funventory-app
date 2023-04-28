@@ -153,8 +153,8 @@ label {
 }
 
 .styled-element:hover {
-  background-color: rgba(254, 120, 128, 0.3);
-  border-color: transparent;
+  background-color: rgba(251, 206, 209, 0.3);
+  border-color: solid #FE7880;
   transition: all 0.3s ease;
 }
 
