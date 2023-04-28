@@ -1,3 +1,4 @@
+
 ![FUNventory APP](/public/pics/funventory-main.png)
 
 ## [PRESS HERE TO CHECK IT OUT](https://funventory-app.fly.dev/) ##
@@ -25,17 +26,15 @@ The following technologies were used in the development of this application:
 * JavaScript
 * HTML
 * CSS
-* Git 
+* Git
 * Docker
 * Fly.io
 
 ## 🧊 Ice Box
 ### Here are some planned future enhancements for the app:
 * Add the completion or incompletion date of the game on the game edit page.
-* Add a personal journal to share gaming experience. Possible to add screenshots, videos, text, game stats.
-* Add statistics and analytics page (how many games played for during certain periods, how many screenshots/reviews added).
-* Add profile page with personal info and all games and reviews added.
+* Add a personal journal to share gaming experiences. It is possible to add screenshots, videos, text, and game stats.
+* Add a statistics and analytics page (how many games were played during certain periods, how many screenshots/reviews added).
+* Add a profile page with personal information and all games and reviews added.
 * Add friends system.
-* Viewing their own profile, users should be able to add video games associated with them. 
-
-We hope you enjoy playing the Ugly Tetris game!
+* Viewing their own profile, users should be able to add video games associated with them.
