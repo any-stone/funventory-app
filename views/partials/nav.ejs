@@ -1,32 +1,32 @@
 <% if (!user) { %>
-  <script defer src="https://accounts.google.com/gsi/client"></script>
-  <% } %>
-    </head>
+<script defer src="https://accounts.google.com/gsi/client"></script>
+<% } %>
+</head>
 
-    <body>
-      <nav>
-        <a href="/" class="brand-link">
-          <h3 class="brand">FUNventory</h3>
-        </a>
-        <div class="nav-items">
-          <div class="tooltip">
-            <a href="/games">🕹️</a>
-            <span class="tooltiptext">all games</span>
-          </div>
-          <div class="tooltip">
-            <a href="/profiles">👾</a>
-            <span class="tooltiptext">all users</span>
-          </div>
-          <% if (user) { %>
-            <div class="tooltip">
-              <a href="/auth/logout">🚪</a>
-              <span class="tooltiptext">log out</span>
-            </div>
-            <% } else { %>
-              <div id="g_id_onload" data-client_id="<%= googleClientID %>" data-login_uri="/auth/google"
-                data-auto_prompt="false"></div>
-              <div class="g_id_signin" data-type="icon" data-size="large" data-theme="filled_black" data-text="signin"
-                data-shape="pill" data-logo_alignment="left"></div>
-              <% } %>
+<body>
+  <nav>
+    <a href="/" class="brand-link">
+      <h3 class="brand">FUNventory</h3>
+    </a>
+    <div class="nav-items">
+      <div class="tooltip">
+        <a href="/games">🕹️</a>
+        <span class="tooltiptext">all games</span>
+      </div>
+      <div class="tooltip">
+        <a href="/profiles">👾</a>
+        <span class="tooltiptext">all users</span>
+      </div>
+      <% if (user) { %>
+        <div class="tooltip">
+          <a href="/auth/logout">🚪</a>
+          <span class="tooltiptext">log out</span>
         </div>
-      </nav>
+        <% } else { %>
+          <div id="g_id_onload" data-client_id="<%= googleClientID %>" data-login_uri="/auth/google"
+            data-auto_prompt="false"></div>
+          <div class="g_id_signin" data-type="icon" data-size="large" data-theme="filled_black" data-text="signin"
+            data-shape="pill" data-logo_alignment="left"></div>
+          <% } %>
+    </div>
+  </nav>
