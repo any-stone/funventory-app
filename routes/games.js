@@ -6,7 +6,7 @@ const router = Router()
 
 router.get('/', gamesCtrl.index)
 router.get('/:gameId', gamesCtrl.show)
-router.get("/:gameId/edit", gamesCtrl.edit)
+router.get("/:gameId/edit", isLoggedIn, gamesCtrl.edit)
 
 router.post('/', isLoggedIn, gamesCtrl.create)
 
